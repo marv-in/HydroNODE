@@ -3,7 +3,10 @@
 NeuralODE models for hydrology
 
 marvin.hoege@eawag.ch, March, 2022
-Code repo for publication at https://doi.org/10.5194/hess-2022-56
+
+Code repo for publication at https://doi.org/10.5194/hess-2022-56. When using the code, please cite.
+
+
 
 ### Data
 
