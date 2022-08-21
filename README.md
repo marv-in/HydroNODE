@@ -1,2 +1,15 @@
 # HydroNODE
+
+NeuralODE models for hydrology
+
+marvin.hoege@eawag.ch, March, 2022
 Code repo for publication at https://doi.org/10.5194/hess-2022-56
+
+### Data
+
+- download `CAMELS time series meteorology, observed flow, meta data (.zip)` from https://ral.ucar.edu/solutions/products/camels
+- unzip and refer to folder `basin_dataset_public_v1p2` as `data_path` in `HydroNODE_main.jl`
+
+### Train models
+- Set user specific settings like `basin_id` in `HydroNODE_main.jl`
+  and execute it.
