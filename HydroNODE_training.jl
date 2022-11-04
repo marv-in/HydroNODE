@@ -4,7 +4,7 @@
 # pre-train NNs for single processes to make them learn the basic
 # physical relations between input variables and process output
 #
-# marvin.hoege@eawag.ch, Mar. 2022
+# marvin.hoege@eawag.ch, Nov. 2022 (v1.1.0)
 # --------------------------------------------------
 
 function prep_norm(norm_moments)
@@ -25,9 +25,9 @@ function pretrain_submodel(model, input, p_init, target_data; optmzr = ADAM(0.01
       sum((pred_NN_pretrain_fct(params)'.-batch).^2)
   end
 
-  optf = GalacticOptim.OptimizationFunction((θ, p) -> loss_NN_pretrain(θ, target_data), GalacticOptim.AutoZygote())
-  optprob = GalacticOptim.OptimizationProblem(optf, p_init)
-  sol = GalacticOptim.solve(optprob, optmzr, maxiters = max_N_iter)
+  optf = Optimization.OptimizationFunction((θ, p) -> loss_NN_pretrain(θ, target_data), Optimization.AutoZygote())
+  optprob = Optimization.OptimizationProblem(optf, p_init)
+  sol = Optimization.solve(optprob, optmzr, maxiters = max_N_iter)
 
   pred_opt = pred_NN_pretrain_fct(sol)'
 
@@ -36,7 +36,7 @@ function pretrain_submodel(model, input, p_init, target_data; optmzr = ADAM(0.01
 end
 
 
-function pretrain_NNs_for_bucket_processes(chosen_model_id, NNs_in_fct, p_NNs_init, NN_input, p_bucket,S0_bucket, S1_bucket, Lday_bucket, P_bucket, T_bucket; print_results=false)
+function pretrain_NNs_for_bucket_processes(chosen_model_id, NNs_in_fct, p_NNs_init, NN_input, p_bucket,S0_bucket, S1_bucket, Lday_bucket, P_bucket, T_bucket)
 
   f_bucket    = p_bucket[1]
   Smax_bucket = p_bucket[2]
@@ -118,9 +118,9 @@ function train_model(pred_NODE, p_init, target_data, target_time; optmzr = ADAM(
       return false
   end
 
-  optf = GalacticOptim.OptimizationFunction((θ, p) -> loss_model(θ), GalacticOptim.AutoZygote())
-  optprob = GalacticOptim.OptimizationProblem(optf, p_init)
-  sol = GalacticOptim.solve(optprob, optmzr, cb = callback, maxiters = max_N_iter)
+  optf = Optimization.OptimizationFunction((θ, p) -> loss_model(θ), Optimization.AutoZygote())
+  optprob = Optimization.OptimizationProblem(optf, p_init)
+  sol = Optimization.solve(optprob, optmzr, callback = callback, maxiters = max_N_iter)
 
   return sol
 

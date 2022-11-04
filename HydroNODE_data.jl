@@ -3,7 +3,7 @@
 # - data loading and pre-processing
 # - data formatting
 #
-# marvin.hoege@eawag.ch, Mar. 2022
+# marvin.hoege@eawag.ch, Nov. 2022 (v1.1.0)
 # --------------------------------------------------
 
 
