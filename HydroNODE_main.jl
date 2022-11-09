@@ -8,7 +8,7 @@
 # --------------------------------------------------
 
 cd(@__DIR__)
-using Pkg; Pkg.activate(".")
+using Pkg; Pkg.activate("."); Pkg.instantiate()
 
 using Revise
 
