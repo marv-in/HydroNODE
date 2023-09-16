@@ -36,7 +36,7 @@ Random.seed!(123)
 
 # set data directory
 project_path = joinpath(pwd(), "..")
-data_path = raw"C:\Users\hoegemar\Data\camels" # joinpath(pwd(),"basin_dataset_public_v1p2")
+data_path = joinpath(pwd(),"basin_dataset_public_v1p2")
 
 # choose model M50 or M100 or full
 chosen_model_id = "M100"
